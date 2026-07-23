@@ -1,0 +1,12 @@
+services:
+  web:
+    environment:
+      DEBUG: "true"
+    env_file:
+      - .env.production
+    networks:
+      - microprojects-db_default
+
+networks:
+  microprojects-db_default:
+    external: true

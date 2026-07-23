@@ -1,0 +1,6 @@
+services:
+  web:
+    environment:
+      DEBUG: "true"
+    env_file:
+      - .env.development
