@@ -1,6 +1,11 @@
 services:
   web:
-    environment:
-      DEBUG: "true"
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
     env_file:
       - .env.development
