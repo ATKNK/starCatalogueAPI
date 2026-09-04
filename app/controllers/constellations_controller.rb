@@ -1,5 +1,5 @@
 class ConstellationsController < ApplicationController
-  before_action :set_constellation, only: %i[ show update destroy ]
+  before_action :set_constellation, only: %i[ show update destroy stars ]
 
   # GET /constellations
   def index
@@ -11,6 +11,11 @@ class ConstellationsController < ApplicationController
   # GET /constellations/1
   def show
     render json: @constellation
+  end
+
+  # GET /constellations/1/stars
+  def stars
+    render json: @constellation.stars
   end
 
   # POST /constellations
@@ -46,6 +51,6 @@ class ConstellationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def constellation_params
-      params.expect(constellation: [ :name, :abbreviation, :adjective ])
+      params.expect(constellation: [ :name, :abbreviation, :adjective ], star: [ :name, :temperature, :magnitude, :mass ])
     end
 end
